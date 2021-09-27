@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace MailSender.Entities
 {
-    class Remittee
+    public class Remittee
     {
-        public int CNPJ { get; set; }
+        [Key]        
+        public string CNPJ { get; set; }
         public string Name { get; set; }
+        public string UF { get; set; }
         public string EmailAddress { get; set; }
         public string EmailAddressII { get; set; }
         public string EmailAddressIII { get; set; }

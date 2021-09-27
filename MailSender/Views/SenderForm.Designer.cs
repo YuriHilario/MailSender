@@ -91,6 +91,7 @@ namespace MailSender.Views
             this.btn_Send.TabIndex = 7;
             this.btn_Send.Text = "Send";
             this.btn_Send.UseVisualStyleBackColor = false;
+            this.btn_Send.Click += new System.EventHandler(this.btn_Send_Click);
             // 
             // panel1
             // 

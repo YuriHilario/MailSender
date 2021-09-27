@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <Folder Include="Repositories\Database\" />
     <Folder Include="Views\Image\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="5.0.10" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.6" />
+    <PackageReference Include="SQLitePCLRaw.core" Version="2.0.6" />
   </ItemGroup>
 
   <ItemGroup>

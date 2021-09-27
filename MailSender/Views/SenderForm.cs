@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MailSender.Entities;
+using MailSender.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,42 @@ namespace MailSender.Views
         public SenderForm()
         {
             InitializeComponent();
+        }
+
+        private void btn_Send_Click(object sender, EventArgs e)
+        {            
+            Remittee to = new Remittee()
+            {
+                Name = "Aleand Seguros LTDA",
+                EmailAddress = "aleand.licita@gmail.com",
+                EmailAddressII = "alex@aleand.com.br",
+                EmailAddressIII = "danielle@aleand.com.br",
+                EmailAddressIV = "cotacoes@aleand.com.br",
+                EmailAddressV = "vendas@aleand.com.br"
+            };
+            Sender from = new Sender()
+            {
+                Name = "Sender Mail",
+                EmailAddres = "aleand.bot@gmail.com"
+            };
+            StringBuilder toBuilderMail = new StringBuilder();
+            toBuilderMail.Append(to.EmailAddress + ";"
+                               + to.EmailAddressII + ";"
+                               + to.EmailAddressIII + ";"
+                               + to.EmailAddressIV + ";"
+                               + to.EmailAddressV);
+            Mail mail = new Mail()
+            {
+                Id = new Random().Next(),
+                SendDate = DateTime.Now,
+                Sender = from.EmailAddres,
+                Remittee = toBuilderMail.ToString(),
+                Body = txt_Body.Text,
+                Title = txt_Subject.Text
+            };
+
+            ToSend._toSend(mail, from, to);
+
         }
     }
 }

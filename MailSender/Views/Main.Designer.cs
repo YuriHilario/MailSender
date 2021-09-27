@@ -33,7 +33,6 @@ namespace MailSender
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panelControllers = new System.Windows.Forms.Panel();
             this.btn_Start = new System.Windows.Forms.Button();
-            this.btn_Config = new System.Windows.Forms.Button();
             this.btn_Remittants = new System.Windows.Forms.Button();
             this.pictureBox_Logo = new System.Windows.Forms.PictureBox();
             this.pictureBox_Background = new System.Windows.Forms.PictureBox();
@@ -60,7 +59,6 @@ namespace MailSender
             // 
             this.panelControllers.BackColor = System.Drawing.Color.DimGray;
             this.panelControllers.Controls.Add(this.btn_Start);
-            this.panelControllers.Controls.Add(this.btn_Config);
             this.panelControllers.Controls.Add(this.btn_Remittants);
             this.panelControllers.Controls.Add(this.pictureBox_Logo);
             this.panelControllers.Dock = System.Windows.Forms.DockStyle.Left;
@@ -75,27 +73,13 @@ namespace MailSender
             this.btn_Start.FlatAppearance.BorderSize = 0;
             this.btn_Start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Start.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_Start.Location = new System.Drawing.Point(0, 56);
+            this.btn_Start.Location = new System.Drawing.Point(0, 28);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(81, 28);
             this.btn_Start.TabIndex = 8;
             this.btn_Start.Text = "Start";
             this.btn_Start.UseVisualStyleBackColor = true;
             this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
-            // 
-            // btn_Config
-            // 
-            this.btn_Config.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Config.FlatAppearance.BorderSize = 0;
-            this.btn_Config.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Config.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_Config.Location = new System.Drawing.Point(0, 28);
-            this.btn_Config.Name = "btn_Config";
-            this.btn_Config.Size = new System.Drawing.Size(81, 28);
-            this.btn_Config.TabIndex = 7;
-            this.btn_Config.Text = "Config";
-            this.btn_Config.UseVisualStyleBackColor = true;
-            this.btn_Config.Click += new System.EventHandler(this.btn_Config_Click);
             // 
             // btn_Remittants
             // 
@@ -168,7 +152,6 @@ namespace MailSender
         private System.Windows.Forms.Panel panelControllers;
         private System.Windows.Forms.Panel panel_BackgoundImg;
         private System.Windows.Forms.Button btn_Start;
-        private System.Windows.Forms.Button btn_Config;
         private System.Windows.Forms.Button btn_Remittants;
     }
 }

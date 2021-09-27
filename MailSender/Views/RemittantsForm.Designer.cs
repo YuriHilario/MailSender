@@ -31,6 +31,14 @@ namespace MailSender.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemittantsForm));
             this.dataGridView_Remittants = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddressII = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressIII = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressIV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_DataGridView = new System.Windows.Forms.Panel();
             this.lbl_name = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,16 +54,8 @@ namespace MailSender.Views
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddressII = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressIII = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressIV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Select = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Remittants)).BeginInit();
             this.panel_DataGridView.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +81,60 @@ namespace MailSender.Views
             this.dataGridView_Remittants.RowTemplate.Height = 25;
             this.dataGridView_Remittants.Size = new System.Drawing.Size(945, 379);
             this.dataGridView_Remittants.TabIndex = 0;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.MinimumWidth = 235;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 235;
+            // 
+            // uf
+            // 
+            this.uf.HeaderText = "UF";
+            this.uf.MinimumWidth = 50;
+            this.uf.Name = "uf";
+            this.uf.ReadOnly = true;
+            this.uf.Width = 50;
+            // 
+            // cnpj
+            // 
+            this.cnpj.HeaderText = "CNPJ";
+            this.cnpj.MinimumWidth = 117;
+            this.cnpj.Name = "cnpj";
+            this.cnpj.ReadOnly = true;
+            this.cnpj.Width = 117;
+            // 
+            // address
+            // 
+            this.address.HeaderText = "Address";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // AddressII
+            // 
+            this.AddressII.HeaderText = "Address II";
+            this.AddressII.Name = "AddressII";
+            this.AddressII.ReadOnly = true;
+            // 
+            // addressIII
+            // 
+            this.addressIII.HeaderText = "Address III";
+            this.addressIII.Name = "addressIII";
+            this.addressIII.ReadOnly = true;
+            // 
+            // addressIV
+            // 
+            this.addressIV.HeaderText = "Address IV";
+            this.addressIV.Name = "addressIV";
+            this.addressIV.ReadOnly = true;
+            // 
+            // addressV
+            // 
+            this.addressV.HeaderText = "Address V";
+            this.addressV.Name = "addressV";
+            this.addressV.ReadOnly = true;
             // 
             // panel_DataGridView
             // 
@@ -203,77 +257,25 @@ namespace MailSender.Views
             this.textBox7.Size = new System.Drawing.Size(225, 23);
             this.textBox7.TabIndex = 15;
             // 
-            // button1
+            // btn_Select
             // 
-            this.button1.Location = new System.Drawing.Point(67, 455);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Select";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Select.Location = new System.Drawing.Point(67, 455);
+            this.btn_Select.Name = "btn_Select";
+            this.btn_Select.Size = new System.Drawing.Size(75, 23);
+            this.btn_Select.TabIndex = 16;
+            this.btn_Select.Text = "Select";
+            this.btn_Select.UseVisualStyleBackColor = true;
+            this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
             // 
-            // button2
+            // btn_Save
             // 
-            this.button2.Location = new System.Drawing.Point(217, 454);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Save";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Name";
-            this.name.MinimumWidth = 235;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 235;
-            // 
-            // uf
-            // 
-            this.uf.HeaderText = "UF";
-            this.uf.MinimumWidth = 50;
-            this.uf.Name = "uf";
-            this.uf.ReadOnly = true;
-            this.uf.Width = 50;
-            // 
-            // cnpj
-            // 
-            this.cnpj.HeaderText = "CNPJ";
-            this.cnpj.MinimumWidth = 117;
-            this.cnpj.Name = "cnpj";
-            this.cnpj.ReadOnly = true;
-            this.cnpj.Width = 117;
-            // 
-            // address
-            // 
-            this.address.HeaderText = "Address";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // AddressII
-            // 
-            this.AddressII.HeaderText = "Address II";
-            this.AddressII.Name = "AddressII";
-            this.AddressII.ReadOnly = true;
-            // 
-            // addressIII
-            // 
-            this.addressIII.HeaderText = "Address III";
-            this.addressIII.Name = "addressIII";
-            this.addressIII.ReadOnly = true;
-            // 
-            // addressIV
-            // 
-            this.addressIV.HeaderText = "Address IV";
-            this.addressIV.Name = "addressIV";
-            this.addressIV.ReadOnly = true;
-            // 
-            // addressV
-            // 
-            this.addressV.HeaderText = "Address V";
-            this.addressV.Name = "addressV";
-            this.addressV.ReadOnly = true;
+            this.btn_Save.Location = new System.Drawing.Point(217, 454);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(75, 23);
+            this.btn_Save.TabIndex = 17;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // RemittantsForm
             // 
@@ -281,8 +283,8 @@ namespace MailSender.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(945, 482);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Save);
+            this.Controls.Add(this.btn_Select);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
@@ -327,8 +329,8 @@ namespace MailSender.Views
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_Select;
+        private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn uf;
         private System.Windows.Forms.DataGridViewTextBoxColumn cnpj;
