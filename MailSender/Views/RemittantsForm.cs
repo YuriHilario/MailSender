@@ -5,44 +5,59 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MailSender.Views
 {
     public partial class RemittantsForm : Form
     {
+        Thread thread;
+
         public RemittantsForm()
         {
             InitializeComponent();
+            LoadDataGridView();
         }
 
-        private void Remittants_Load(object sender, EventArgs e)
-        {
 
+        #region Windows
+        private void AddRemitte()
+        {
+            Application.Run(new AddRemittee());
         }
 
-        private void btn_Select_Click(object sender, EventArgs e)
+        private void btn_Add_Click(object sender, EventArgs e)
         {
-            Remittee remittee = new Remittee()
+            AddRemittee addRemittee = new AddRemittee();
+            thread = new Thread(AddRemitte);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        #endregion
+
+        private void LoadDataGridView()
+        {
+            List<Remittee> remittants = RemitteeContext.FindRemittants();
+            foreach (Remittee remittee in remittants)
             {
-                Name = "",
-                CNPJ = "00.000.000/0001-00",
-                EmailAddress = "teste@Aleand.com.br",
-                EmailAddressII = string.Empty,
-                EmailAddressIII = string.Empty,
-                EmailAddressIV = string.Empty,
-                EmailAddressV = string.Empty
-            };
-            using (var db = new RemitteeContext())
-            {
-                db.Remittees.Find(remittee.CNPJ);
+                dataGridView_Remittants.Rows.Add(remittee.Name,
+                                                 remittee.UF,
+                                                 remittee.CNPJ,
+                                                 remittee.EmailAddress,
+                                                 remittee.EmailAddressII,
+                                                 remittee.EmailAddressIII,
+                                                 remittee.EmailAddressIV,
+                                                 remittee.EmailAddressV);
             }
         }
 
-        private void btn_Save_Click(object sender, EventArgs e)
+        private void btn_Search_Click(object sender, EventArgs e)
         {
-           
+
         }
     }
 }

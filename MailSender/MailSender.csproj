@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="5.0.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RestSharp" Version="106.12.0" />
     <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.6" />
     <PackageReference Include="SQLitePCLRaw.core" Version="2.0.6" />
   </ItemGroup>

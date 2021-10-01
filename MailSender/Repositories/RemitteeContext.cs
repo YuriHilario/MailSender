@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MailSender.Repositories
@@ -22,5 +23,33 @@ namespace MailSender.Repositories
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=D:\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
+
+        public static List<Remittee> FindRemittants()
+        {
+            List<Remittee> remittants = new List<Remittee>();
+            using (var context = new RemitteeContext())
+            {
+                remittants = context.Remittees.ToList();
+                return remittants;
+            }
+        }
+
+        public static void AddRemittee(Remittee remittee)
+        {
+            using (var context = new RemitteeContext())
+            {
+                context.Remittees.Add(remittee);
+                context.SaveChanges();
+            }
+        }
+
+        public static Remittee FindPerCNPJ(string cnpj)
+        {            
+            using (var context = new RemitteeContext())
+            {
+                Remittee remittee = context.Remittees.Find(cnpj);
+                return remittee;
+            }
+        }
     }
 }
