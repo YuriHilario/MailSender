@@ -20,7 +20,7 @@ namespace MailSender.Views
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
-        {
+        {            
             Remittee remittee = new Remittee()
             {
                 Name = txt_Name.Text,
@@ -34,12 +34,13 @@ namespace MailSender.Views
             };
             try
             {
-                RemitteeContext.AddRemittee(remittee);
+                RemitteeContext.Add(remittee);
             }
             catch (Exception except)
             {
-                MessageBox.Show(except.Message);
-            }            
-        }
+                MessageBox.Show(except.InnerException.ToString());
+            }
+        }       
     }
 }
+

@@ -163,7 +163,7 @@ namespace MailSender.Views
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(347, 227);
+            this.btn_Save.Location = new System.Drawing.Point(347, 237);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(75, 23);
             this.btn_Save.TabIndex = 14;

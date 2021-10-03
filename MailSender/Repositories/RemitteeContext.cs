@@ -17,12 +17,12 @@ namespace MailSender.Repositories
             if (!_created)
             {
                 _created = true;
-                Database.EnsureDeleted();
+                //Database.EnsureDeleted();
                 Database.EnsureCreated();
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=D:\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=C:\Users\pablo\source\repos\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
 
         public static List<Remittee> FindRemittants()
         {
@@ -34,7 +34,7 @@ namespace MailSender.Repositories
             }
         }
 
-        public static void AddRemittee(Remittee remittee)
+        public static void Add(Remittee remittee)
         {
             using (var context = new RemitteeContext())
             {
@@ -49,6 +49,18 @@ namespace MailSender.Repositories
             {
                 Remittee remittee = context.Remittees.Find(cnpj);
                 return remittee;
+            }
+        }
+
+        public static void Update(Remittee remittee)
+        {
+            using (var context = new RemitteeContext())
+            {
+                if (remittee != null)
+                {
+                    context.Remittees.Update(remittee);
+                    context.SaveChanges();
+                }
             }
         }
     }

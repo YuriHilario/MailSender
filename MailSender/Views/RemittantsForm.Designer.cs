@@ -41,6 +41,10 @@ namespace MailSender.Views
             this.addressV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_DataGridView = new System.Windows.Forms.Panel();
             this.panel_Control = new System.Windows.Forms.Panel();
+            this.btn_LoadData = new System.Windows.Forms.Button();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.txt_FilterCNPJ = new System.Windows.Forms.TextBox();
+            this.lbl_FilterCNPJ = new System.Windows.Forms.Label();
             this.btn_Select = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
             this.lbl_name = new System.Windows.Forms.Label();
@@ -50,18 +54,18 @@ namespace MailSender.Views
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lbl_CNPJ = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txt_Name = new System.Windows.Forms.TextBox();
+            this.txt_Address = new System.Windows.Forms.TextBox();
+            this.txt_AddressIII = new System.Windows.Forms.TextBox();
+            this.txt_CNPJ = new System.Windows.Forms.TextBox();
+            this.txt_AddressII = new System.Windows.Forms.TextBox();
+            this.txt_AddressIV = new System.Windows.Forms.TextBox();
+            this.txt_AddressV = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.lbl_FilterCNPJ = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.btn_Search = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.txt_UF = new System.Windows.Forms.TextBox();
+            this.lbl_UF = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Remittants)).BeginInit();
             this.panel_DataGridView.SuspendLayout();
             this.panel_Control.SuspendLayout();
@@ -160,22 +164,68 @@ namespace MailSender.Views
             this.panel_DataGridView.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_DataGridView.Location = new System.Drawing.Point(0, 0);
             this.panel_DataGridView.Name = "panel_DataGridView";
-            this.panel_DataGridView.Size = new System.Drawing.Size(1208, 379);
+            this.panel_DataGridView.Size = new System.Drawing.Size(1209, 379);
             this.panel_DataGridView.TabIndex = 1;
             // 
             // panel_Control
             // 
             this.panel_Control.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_Control.Controls.Add(this.btn_LoadData);
             this.panel_Control.Controls.Add(this.btn_Search);
-            this.panel_Control.Controls.Add(this.textBox8);
+            this.panel_Control.Controls.Add(this.txt_FilterCNPJ);
             this.panel_Control.Controls.Add(this.lbl_FilterCNPJ);
             this.panel_Control.Controls.Add(this.btn_Select);
             this.panel_Control.Controls.Add(this.btn_Add);
             this.panel_Control.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Control.Location = new System.Drawing.Point(0, 0);
             this.panel_Control.Name = "panel_Control";
-            this.panel_Control.Size = new System.Drawing.Size(1206, 35);
+            this.panel_Control.Size = new System.Drawing.Size(1207, 35);
             this.panel_Control.TabIndex = 1;
+            // 
+            // btn_LoadData
+            // 
+            this.btn_LoadData.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_LoadData.FlatAppearance.BorderSize = 0;
+            this.btn_LoadData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_LoadData.ForeColor = System.Drawing.Color.White;
+            this.btn_LoadData.Location = new System.Drawing.Point(150, 0);
+            this.btn_LoadData.Name = "btn_LoadData";
+            this.btn_LoadData.Size = new System.Drawing.Size(75, 33);
+            this.btn_LoadData.TabIndex = 5;
+            this.btn_LoadData.Text = "Load Data";
+            this.btn_LoadData.UseVisualStyleBackColor = true;
+            this.btn_LoadData.Click += new System.EventHandler(this.btn_LoadData_Click);
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_Search.FlatAppearance.BorderSize = 0;
+            this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Search.ForeColor = System.Drawing.Color.White;
+            this.btn_Search.Location = new System.Drawing.Point(1130, 0);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(75, 33);
+            this.btn_Search.TabIndex = 4;
+            this.btn_Search.Text = "Search";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
+            // txt_FilterCNPJ
+            // 
+            this.txt_FilterCNPJ.Location = new System.Drawing.Point(853, 6);
+            this.txt_FilterCNPJ.Name = "txt_FilterCNPJ";
+            this.txt_FilterCNPJ.Size = new System.Drawing.Size(261, 23);
+            this.txt_FilterCNPJ.TabIndex = 3;
+            // 
+            // lbl_FilterCNPJ
+            // 
+            this.lbl_FilterCNPJ.AutoSize = true;
+            this.lbl_FilterCNPJ.ForeColor = System.Drawing.Color.White;
+            this.lbl_FilterCNPJ.Location = new System.Drawing.Point(813, 11);
+            this.lbl_FilterCNPJ.Name = "lbl_FilterCNPJ";
+            this.lbl_FilterCNPJ.Size = new System.Drawing.Size(34, 15);
+            this.lbl_FilterCNPJ.TabIndex = 2;
+            this.lbl_FilterCNPJ.Text = "CNPJ";
             // 
             // btn_Select
             // 
@@ -189,6 +239,7 @@ namespace MailSender.Views
             this.btn_Select.TabIndex = 1;
             this.btn_Select.Text = "Select";
             this.btn_Select.UseVisualStyleBackColor = true;
+            this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
             // 
             // btn_Add
             // 
@@ -274,55 +325,61 @@ namespace MailSender.Views
             this.lbl_CNPJ.TabIndex = 8;
             this.lbl_CNPJ.Text = "CNPJ";
             // 
-            // textBox1
+            // txt_Name
             // 
-            this.textBox1.Location = new System.Drawing.Point(67, 383);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(225, 23);
-            this.textBox1.TabIndex = 9;
+            this.txt_Name.ForeColor = System.Drawing.Color.Black;
+            this.txt_Name.Location = new System.Drawing.Point(67, 383);
+            this.txt_Name.Name = "txt_Name";
+            this.txt_Name.Size = new System.Drawing.Size(225, 23);
+            this.txt_Name.TabIndex = 9;
             // 
-            // textBox2
+            // txt_Address
             // 
-            this.textBox2.Location = new System.Drawing.Point(365, 383);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(225, 23);
-            this.textBox2.TabIndex = 10;
+            this.txt_Address.ForeColor = System.Drawing.Color.Black;
+            this.txt_Address.Location = new System.Drawing.Point(365, 383);
+            this.txt_Address.Name = "txt_Address";
+            this.txt_Address.Size = new System.Drawing.Size(225, 23);
+            this.txt_Address.TabIndex = 10;
             // 
-            // textBox3
+            // txt_AddressIII
             // 
-            this.textBox3.Location = new System.Drawing.Point(365, 420);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(225, 23);
-            this.textBox3.TabIndex = 11;
+            this.txt_AddressIII.ForeColor = System.Drawing.Color.Black;
+            this.txt_AddressIII.Location = new System.Drawing.Point(365, 420);
+            this.txt_AddressIII.Name = "txt_AddressIII";
+            this.txt_AddressIII.Size = new System.Drawing.Size(225, 23);
+            this.txt_AddressIII.TabIndex = 11;
             // 
-            // textBox4
+            // txt_CNPJ
             // 
-            this.textBox4.Location = new System.Drawing.Point(67, 420);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(225, 23);
-            this.textBox4.TabIndex = 12;
+            this.txt_CNPJ.ForeColor = System.Drawing.Color.Black;
+            this.txt_CNPJ.Location = new System.Drawing.Point(67, 420);
+            this.txt_CNPJ.Name = "txt_CNPJ";
+            this.txt_CNPJ.Size = new System.Drawing.Size(225, 23);
+            this.txt_CNPJ.TabIndex = 12;
             // 
-            // textBox5
+            // txt_AddressII
             // 
-            this.textBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox5.Location = new System.Drawing.Point(666, 383);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(225, 23);
-            this.textBox5.TabIndex = 13;
+            this.txt_AddressII.ForeColor = System.Drawing.Color.Black;
+            this.txt_AddressII.Location = new System.Drawing.Point(666, 383);
+            this.txt_AddressII.Name = "txt_AddressII";
+            this.txt_AddressII.Size = new System.Drawing.Size(225, 23);
+            this.txt_AddressII.TabIndex = 13;
             // 
-            // textBox6
+            // txt_AddressIV
             // 
-            this.textBox6.Location = new System.Drawing.Point(666, 420);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(225, 23);
-            this.textBox6.TabIndex = 14;
+            this.txt_AddressIV.ForeColor = System.Drawing.Color.Black;
+            this.txt_AddressIV.Location = new System.Drawing.Point(666, 420);
+            this.txt_AddressIV.Name = "txt_AddressIV";
+            this.txt_AddressIV.Size = new System.Drawing.Size(225, 23);
+            this.txt_AddressIV.TabIndex = 14;
             // 
-            // textBox7
+            // txt_AddressV
             // 
-            this.textBox7.Location = new System.Drawing.Point(962, 383);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(225, 23);
-            this.textBox7.TabIndex = 15;
+            this.txt_AddressV.ForeColor = System.Drawing.Color.Black;
+            this.txt_AddressV.Location = new System.Drawing.Point(962, 383);
+            this.txt_AddressV.Name = "txt_AddressV";
+            this.txt_AddressV.Size = new System.Drawing.Size(225, 23);
+            this.txt_AddressV.TabIndex = 15;
             // 
             // button3
             // 
@@ -338,50 +395,53 @@ namespace MailSender.Views
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 0;
             // 
-            // lbl_FilterCNPJ
+            // btn_Save
             // 
-            this.lbl_FilterCNPJ.AutoSize = true;
-            this.lbl_FilterCNPJ.ForeColor = System.Drawing.Color.White;
-            this.lbl_FilterCNPJ.Location = new System.Drawing.Point(813, 11);
-            this.lbl_FilterCNPJ.Name = "lbl_FilterCNPJ";
-            this.lbl_FilterCNPJ.Size = new System.Drawing.Size(34, 15);
-            this.lbl_FilterCNPJ.TabIndex = 2;
-            this.lbl_FilterCNPJ.Text = "CNPJ";
+            this.btn_Save.FlatAppearance.BorderSize = 0;
+            this.btn_Save.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_Save.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btn_Save.Location = new System.Drawing.Point(1128, 420);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(69, 23);
+            this.btn_Save.TabIndex = 16;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
-            // textBox8
+            // txt_UF
             // 
-            this.textBox8.Location = new System.Drawing.Point(853, 6);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(261, 23);
-            this.textBox8.TabIndex = 3;
+            this.txt_UF.ForeColor = System.Drawing.Color.Black;
+            this.txt_UF.Location = new System.Drawing.Point(962, 420);
+            this.txt_UF.Name = "txt_UF";
+            this.txt_UF.Size = new System.Drawing.Size(33, 23);
+            this.txt_UF.TabIndex = 18;
             // 
-            // btn_Search
+            // lbl_UF
             // 
-            this.btn_Search.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_Search.FlatAppearance.BorderSize = 0;
-            this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Search.ForeColor = System.Drawing.Color.White;
-            this.btn_Search.Location = new System.Drawing.Point(1129, 0);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(75, 33);
-            this.btn_Search.TabIndex = 4;
-            this.btn_Search.Text = "Search";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            this.lbl_UF.AutoSize = true;
+            this.lbl_UF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lbl_UF.Location = new System.Drawing.Point(935, 423);
+            this.lbl_UF.Name = "lbl_UF";
+            this.lbl_UF.Size = new System.Drawing.Size(21, 15);
+            this.lbl_UF.TabIndex = 17;
+            this.lbl_UF.Text = "UF";
             // 
             // RemittantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1208, 451);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1209, 451);
+            this.Controls.Add(this.txt_UF);
+            this.Controls.Add(this.lbl_UF);
+            this.Controls.Add(this.btn_Save);
+            this.Controls.Add(this.txt_AddressV);
+            this.Controls.Add(this.txt_AddressIV);
+            this.Controls.Add(this.txt_AddressII);
+            this.Controls.Add(this.txt_CNPJ);
+            this.Controls.Add(this.txt_AddressIII);
+            this.Controls.Add(this.txt_Address);
+            this.Controls.Add(this.txt_Name);
             this.Controls.Add(this.lbl_CNPJ);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -413,13 +473,13 @@ namespace MailSender.Views
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbl_CNPJ;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txt_Name;
+        private System.Windows.Forms.TextBox txt_Address;
+        private System.Windows.Forms.TextBox txt_AddressIII;
+        private System.Windows.Forms.TextBox txt_CNPJ;
+        private System.Windows.Forms.TextBox txt_AddressII;
+        private System.Windows.Forms.TextBox txt_AddressIV;
+        private System.Windows.Forms.TextBox txt_AddressV;
         private System.Windows.Forms.Panel panel_Control;
         private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.Button button3;
@@ -433,8 +493,12 @@ namespace MailSender.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn addressIII;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressIV;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressV;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txt_FilterCNPJ;
         private System.Windows.Forms.Label lbl_FilterCNPJ;
         private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.Button btn_LoadData;
+        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.TextBox txt_UF;
+        private System.Windows.Forms.Label lbl_UF;
     }
 }
