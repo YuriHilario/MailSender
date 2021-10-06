@@ -17,6 +17,7 @@ namespace MailSender.Views
         {
             InitializeComponent();
             LoadSender();
+            LoadTo();
         }
 
         private void btn_Send_Click(object sender, EventArgs e)
@@ -56,17 +57,13 @@ namespace MailSender.Views
                 txt_From.Items.Add(sender);
             }
         }
-
-        private void btn_SelectMode_Click(object sender, EventArgs e)
+        
+        private void LoadTo()
         {
-            string modeSelected = cb_ModeSend.SelectedItem.ToString().ToUpper();
-            if (modeSelected == "MUTIPLE")
+            var ufs = LoadUF.LoadDataLocates();
+            foreach (var to in ufs.sigla)
             {
-
-            }
-            else
-            {
-
+                txt_To.Items.Add(to);
             }
         }
     }

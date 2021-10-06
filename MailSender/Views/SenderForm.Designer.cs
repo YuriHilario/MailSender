@@ -38,8 +38,6 @@ namespace MailSender.Views
             this.txt_To = new System.Windows.Forms.ComboBox();
             this.lbl_From = new System.Windows.Forms.Label();
             this.txt_From = new System.Windows.Forms.ComboBox();
-            this.cb_ModeSend = new System.Windows.Forms.ComboBox();
-            this.btn_SelectMode = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_To
@@ -96,7 +94,7 @@ namespace MailSender.Views
             this.txt_To.FormattingEnabled = true;
             this.txt_To.Location = new System.Drawing.Point(62, 41);
             this.txt_To.Name = "txt_To";
-            this.txt_To.Size = new System.Drawing.Size(365, 23);
+            this.txt_To.Size = new System.Drawing.Size(67, 23);
             this.txt_To.TabIndex = 9;
             // 
             // lbl_From
@@ -117,39 +115,12 @@ namespace MailSender.Views
             this.txt_From.Size = new System.Drawing.Size(365, 23);
             this.txt_From.TabIndex = 12;
             // 
-            // cb_ModeSend
-            // 
-            this.cb_ModeSend.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cb_ModeSend.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cb_ModeSend.FormattingEnabled = true;
-            this.cb_ModeSend.Items.AddRange(new object[] {
-            "Single",
-            "Mutiple"});
-            this.cb_ModeSend.Location = new System.Drawing.Point(448, 41);
-            this.cb_ModeSend.Name = "cb_ModeSend";
-            this.cb_ModeSend.Size = new System.Drawing.Size(62, 23);
-            this.cb_ModeSend.TabIndex = 13;
-            this.cb_ModeSend.Text = "Single";
-            // 
-            // btn_SelectMode
-            // 
-            this.btn_SelectMode.ForeColor = System.Drawing.Color.Black;
-            this.btn_SelectMode.Location = new System.Drawing.Point(516, 41);
-            this.btn_SelectMode.Name = "btn_SelectMode";
-            this.btn_SelectMode.Size = new System.Drawing.Size(86, 23);
-            this.btn_SelectMode.TabIndex = 14;
-            this.btn_SelectMode.Text = "Select Mode";
-            this.btn_SelectMode.UseVisualStyleBackColor = true;
-            this.btn_SelectMode.Click += new System.EventHandler(this.btn_SelectMode_Click);
-            // 
             // SenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(644, 464);
-            this.Controls.Add(this.btn_SelectMode);
-            this.Controls.Add(this.cb_ModeSend);
             this.Controls.Add(this.txt_From);
             this.Controls.Add(this.lbl_From);
             this.Controls.Add(this.txt_To);
@@ -177,7 +148,5 @@ namespace MailSender.Views
         private System.Windows.Forms.ComboBox txt_To;
         private System.Windows.Forms.Label lbl_From;
         private System.Windows.Forms.ComboBox txt_From;
-        private System.Windows.Forms.ComboBox cb_ModeSend;
-        private System.Windows.Forms.Button btn_SelectMode;
     }
 }
