@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using MailSender.Repositories;
 
 namespace MailSender.Views
 {
@@ -15,6 +16,7 @@ namespace MailSender.Views
         public SenderForm()
         {
             InitializeComponent();
+            LoadSender();
         }
 
         private void btn_Send_Click(object sender, EventArgs e)
@@ -32,25 +34,40 @@ namespace MailSender.Views
             {
                 Name = "Sender Mail",
                 EmailAddres = "aleand.bot@gmail.com"
-            };
-            StringBuilder toBuilderMail = new StringBuilder();
-            toBuilderMail.Append(to.EmailAddress + ";"
-                               + to.EmailAddressII + ";"
-                               + to.EmailAddressIII + ";"
-                               + to.EmailAddressIV + ";"
-                               + to.EmailAddressV);
+            };            
             Mail mail = new Mail()
             {
                 Id = new Random().Next(),
                 SendDate = DateTime.Now,
-                Sender = from.EmailAddres,
-                Remittee = toBuilderMail.ToString(),
+                Sender = from,
+                Remittee = to,
                 Body = txt_Body.Text,
                 Title = txt_Subject.Text
             };
 
-            ToSend._toSend(mail, from, to);
+            ToSend._toSend(mail);
+        }
 
+        private void LoadSender()
+        {
+            var senders = SenderContext.FindSenders();
+            foreach (var sender in senders)
+            {
+                txt_From.Items.Add(sender);
+            }
+        }
+
+        private void btn_SelectMode_Click(object sender, EventArgs e)
+        {
+            string modeSelected = cb_ModeSend.SelectedItem.ToString().ToUpper();
+            if (modeSelected == "MUTIPLE")
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 }

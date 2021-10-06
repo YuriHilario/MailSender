@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MailSender.Entities
 {
     public class Sender
     {
-        public string Name { get; set; }
+        [Key]
         public string EmailAddres { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
     }
 }

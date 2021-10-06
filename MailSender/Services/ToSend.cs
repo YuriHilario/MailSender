@@ -1,33 +1,35 @@
 ﻿using MailSender.Entities;
+using System.Net.Mail;
 
 namespace MailSender.Services
 {
     public class ToSend
     {
-        public static void _toSend(Mail mail, Sender sender, Remittee remittee)
+        public static void _toSend(Mail mail)
         {
             // Envio de email com descrição
-            var fromAddress = new System.Net.Mail.MailAddress(sender.EmailAddres, sender.Name);
-            var toAddress = new System.Net.Mail.MailAddress(remittee.EmailAddress, remittee.Name);
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress(mail.Sender.EmailAddres, mail.Sender.Name);
+            mailMessage.To.Add(mail.Remittee.EmailAddress);
+            mailMessage.Bcc.Add(mail.Remittee.EmailAddressII);
+            mailMessage.Bcc.Add(mail.Remittee.EmailAddressIII);
+            mailMessage.Bcc.Add(mail.Remittee.EmailAddressIV);
+            mailMessage.Bcc.Add(mail.Remittee.EmailAddressV);
+            mailMessage.Subject = mail.Title;
+            mailMessage.Body = mail.Body;
+            
             const string fromPassword = "Ale@nd2409";
 
-            var smtp = new System.Net.Mail.SmtpClient
+            var smtp = new SmtpClient
             {
                 Host = "smtp.gmail.com",
                 Port = 587,
                 EnableSsl = true,
-                DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new System.Net.NetworkCredential(fromAddress.Address, fromPassword)
+                Credentials = new System.Net.NetworkCredential(mail.Sender.EmailAddres, fromPassword)
             };
-            using (var message = new System.Net.Mail.MailMessage(fromAddress, toAddress)
-            {
-                Subject = mail.Title + " " + (remittee.Name + "/" + remittee.UF),
-                Body = mail.Body
-            })
-            {
-                smtp.Send(message);
-            }
+            smtp.Send(mailMessage);
         }
     }
 }

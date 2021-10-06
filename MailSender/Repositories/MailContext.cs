@@ -16,11 +16,10 @@ namespace MailSender.Repositories
             if (!_created)
             {
                 _created = true;
-                Database.EnsureDeleted();
                 Database.EnsureCreated();
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=D:\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=X:\DatabaseSender.db");
     }
 }
