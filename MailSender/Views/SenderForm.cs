@@ -21,14 +21,14 @@ namespace MailSender.Views
         private void btn_Send_Click(object sender, EventArgs e)
         {            
             Remittee to = new Remittee()
-            {
-                Name = "Aleand Seguros LTDA",
-                EmailAddress = "aleand.licita@gmail.com",
-                EmailAddressII = "alex@aleand.com.br",
-                EmailAddressIII = "danielle@aleand.com.br",
-                EmailAddressIV = "cotacoes@aleand.com.br",
-                EmailAddressV = "vendas@aleand.com.br"
-            };
+                {
+                    Name = "Aleand Seguros LTDA",
+                    EmailAddress = "aleand.licita@gmail.com",
+                    EmailAddressII = "alex@aleand.com.br",
+                    EmailAddressIII = "danielle@aleand.com.br",
+                    EmailAddressIV = "cotacoes@aleand.com.br",
+                    EmailAddressV = "vendas@aleand.com.br"
+                };
             Sender from = new Sender()
             {
                 Name = "Sender Mail",
@@ -57,7 +57,7 @@ namespace MailSender.Views
 
             foreach (var sender in senders)
             {
-                txt_From.Items.Add(sender);
+                txt_From.Items.Add(sender.EmailAddres);
             }
         }
         
@@ -66,8 +66,18 @@ namespace MailSender.Views
             var ufs = LoadUF.LoadDataLocates();
             foreach (var to in ufs)
             {
-                txt_To.Items.Add(to);
+                txt_To.Items.Add(to.sigla);
             }
+        }
+
+        private Sender SearchSender_PerEmail(string email)
+        {
+            Sender sender = new Sender();
+            using (var context = new AppContext())
+            {
+                sender = context.Sender.Find(email);
+            }
+            return sender;
         }
     }
 }

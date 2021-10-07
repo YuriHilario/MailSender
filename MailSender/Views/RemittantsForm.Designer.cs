@@ -452,7 +452,7 @@ namespace MailSender.Views
             this.Controls.Add(this.panel_DataGridView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RemittantsForm";
-            this.Text = "Remittants";
+            this.Text = "Mail Sender - Remittants";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Remittants)).EndInit();
             this.panel_DataGridView.ResumeLayout(false);
             this.panel_Control.ResumeLayout(false);

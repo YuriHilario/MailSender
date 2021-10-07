@@ -115,7 +115,7 @@ namespace MailSender.Views
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddSender";
-            this.Text = "AddSender";
+            this.Text = "Add Sender";
             this.ResumeLayout(false);
             this.PerformLayout();
 

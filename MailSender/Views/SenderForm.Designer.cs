@@ -132,7 +132,7 @@ namespace MailSender.Views
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SenderForm";
-            this.Text = "Sender";
+            this.Text = "Mail Sender";
             this.ResumeLayout(false);
             this.PerformLayout();
 

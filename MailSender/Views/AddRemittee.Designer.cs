@@ -221,7 +221,7 @@ namespace MailSender.Views
             this.Controls.Add(this.lbl_Name);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddRemittee";
-            this.Text = "AddRemittee";
+            this.Text = "Add Remittee";
             this.ResumeLayout(false);
             this.PerformLayout();
 
