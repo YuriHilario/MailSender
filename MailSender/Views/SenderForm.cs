@@ -2,12 +2,10 @@
 using MailSender.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using MailSender.Repositories;
+using System.Linq;
+using AppContext = MailSender.Repositories.AppContext;
 
 namespace MailSender.Views
 {
@@ -51,7 +49,12 @@ namespace MailSender.Views
 
         private void LoadSender()
         {
-            var senders = SenderContext.FindSenders();
+            List<Sender> senders = new List<Sender>();
+            using (var context = new AppContext())
+            {
+                senders = context.Sender.ToList();
+            }
+
             foreach (var sender in senders)
             {
                 txt_From.Items.Add(sender);
@@ -61,7 +64,7 @@ namespace MailSender.Views
         private void LoadTo()
         {
             var ufs = LoadUF.LoadDataLocates();
-            foreach (var to in ufs.sigla)
+            foreach (var to in ufs)
             {
                 txt_To.Items.Add(to);
             }

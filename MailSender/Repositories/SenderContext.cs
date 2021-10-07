@@ -21,7 +21,7 @@ namespace MailSender.Repositories
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=X:\DatabaseSender.db");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=D:\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
 
 
         public static void Add(Sender sender)
@@ -44,17 +44,5 @@ namespace MailSender.Repositories
                 }
             }
         }
-
-        public static List<Sender> FindSenders()
-        {
-            List<Sender> senders = new List<Sender>();
-            using (var context = new SenderContext())
-            {
-                senders = context.Sender.ToList();
-                return senders;
-            }
-        }
-
-        
     }
 }

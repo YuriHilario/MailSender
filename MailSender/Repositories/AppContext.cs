@@ -1,18 +1,18 @@
 ﻿using MailSender.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 
 namespace MailSender.Repositories
 {
-    class RemitteeContext : DbContext
+    class AppContext : DbContext
     {
+        public DbSet<Mail> Mail { get; set; }
         public DbSet<Remittee> Remittees { get; set; }
+        public DbSet<Sender> Sender { get; set; }
 
         private static bool _created = false;
-        public RemitteeContext()
+
+        public AppContext()
         {
             if (!_created)
             {
@@ -22,15 +22,5 @@ namespace MailSender.Repositories
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=D:\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
-          
-        public static List<Remittee> FindPerUF(string uf)
-        {
-            List<Remittee> remittants = new List<Remittee>();
-            using (var context = new RemitteeContext())
-            {
-                var remittee = context.Remittees.Where(r => r.UF.StartsWith(uf)).ToList();
-                return remittants;
-            }
-        }
     }
 }

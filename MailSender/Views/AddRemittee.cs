@@ -1,14 +1,8 @@
 ﻿using MailSender.Entities;
 using MailSender.Repositories;
-using Newtonsoft.Json;
-using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using AppContext = MailSender.Repositories.AppContext;
 
 namespace MailSender.Views
 {
@@ -24,7 +18,7 @@ namespace MailSender.Views
             Remittee remittee = new Remittee()
             {
                 Name = txt_Name.Text,
-                CNPJ = txt_CNPJ.Text,
+                CNPJ = txt_CNPJ.Text.Replace(",", "").Replace("/", "").Replace("-", "").Replace(".", ""),
                 UF = txt_UF.Text,
                 EmailAddress = txt_Address.Text,
                 EmailAddressII = txt_AddressII.Text,
@@ -34,7 +28,11 @@ namespace MailSender.Views
             };
             try
             {
-                RemitteeContext.Add(remittee);
+                using (var context = new AppContext())
+                {
+                    context.Remittees.Add(remittee);
+                    context.SaveChanges();
+                }
             }
             catch (Exception except)
             {

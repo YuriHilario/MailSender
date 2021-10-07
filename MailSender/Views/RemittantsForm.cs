@@ -2,13 +2,10 @@
 using MailSender.Repositories;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using AppContext = MailSender.Repositories.AppContext;
 
 namespace MailSender.Views
 {
@@ -42,7 +39,13 @@ namespace MailSender.Views
         private void LoadDataGridView()
         {
             dataGridView_Remittants.Rows.Clear();
-            List<Remittee> remittants = RemitteeContext.FindRemittants();
+
+            List<Remittee> remittants = new List<Remittee>();
+            using (var context = new AppContext())
+            {
+                remittants = context.Remittees.ToList();
+            }
+
             foreach (Remittee remittee in remittants)
             {
                 dataGridView_Remittants.Rows.Add(remittee.Name,
@@ -59,7 +62,14 @@ namespace MailSender.Views
         private void btn_Search_Click(object sender, EventArgs e)
         {
             dataGridView_Remittants.Rows.Clear();
-            Remittee remittee = RemitteeContext.FindPerCNPJ(txt_FilterCNPJ.Text);
+            string cnpj = txt_FilterCNPJ.Text;
+            Remittee remittee = new Remittee();
+
+            using (var context = new AppContext())
+            {
+                remittee = context.Remittees.Find(cnpj);                
+            }
+
             dataGridView_Remittants.Rows.Add(remittee.Name,
                                              remittee.UF,
                                              remittee.CNPJ,
@@ -73,8 +83,14 @@ namespace MailSender.Views
 
         private void btn_LoadData_Click(object sender, EventArgs e)
         {
-            dataGridView_Remittants.Rows.Clear();
-            List<Remittee> remittants = RemitteeContext.FindRemittants();
+            dataGridView_Remittants.Rows.Clear(); 
+
+            List<Remittee> remittants = new List<Remittee>();
+            using (var context = new AppContext())
+            {
+                remittants = context.Remittees.ToList();
+            }
+
             foreach (Remittee remittee in remittants)
             {
                 dataGridView_Remittants.Rows.Add(remittee.Name,
@@ -93,7 +109,8 @@ namespace MailSender.Views
             Remittee remittee = new Remittee()
             {
                 Name = txt_Name.Text,
-                CNPJ = txt_CNPJ.Text,
+                CNPJ = txt_CNPJ.Text.Replace(",", "").Replace("/", "").Replace("-", "").Replace(".", ""),
+                UF = txt_UF.Text,
                 EmailAddress = txt_Address.Text,
                 EmailAddressII = txt_AddressII.Text,
                 EmailAddressIII = txt_AddressIII.Text,
@@ -102,7 +119,14 @@ namespace MailSender.Views
             };
             try
             {
-                RemitteeContext.Update(remittee);
+                using (var context = new AppContext())
+                {
+                    if (remittee != null)
+                    {
+                        context.Remittees.Update(remittee);
+                        context.SaveChanges();
+                    }
+                }
             }
             catch (Exception exception)
             {
@@ -115,7 +139,7 @@ namespace MailSender.Views
         {
             string name = dataGridView_Remittants.CurrentRow.Cells[0].Value.ToString();
             string uf = dataGridView_Remittants.CurrentRow.Cells[1].Value.ToString();
-            string cnpj = dataGridView_Remittants.CurrentRow.Cells[2].Value.ToString();
+            string cnpj = dataGridView_Remittants.CurrentRow.Cells[2].Value.ToString().Replace(",","").Replace("/", "").Replace("-", "").Replace(".", "");
             string address = dataGridView_Remittants.CurrentRow.Cells[3].Value.ToString();
             string addressII = dataGridView_Remittants.CurrentRow.Cells[4].Value.ToString();
             string addressIII = dataGridView_Remittants.CurrentRow.Cells[5].Value.ToString();

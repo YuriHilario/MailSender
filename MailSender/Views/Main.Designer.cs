@@ -32,6 +32,7 @@ namespace MailSender
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel_Main = new System.Windows.Forms.Panel();
             this.panelControllers = new System.Windows.Forms.Panel();
+            this.btn_Senders = new System.Windows.Forms.Button();
             this.btn_Start = new System.Windows.Forms.Button();
             this.btn_Remittants = new System.Windows.Forms.Button();
             this.pictureBox_Logo = new System.Windows.Forms.PictureBox();
@@ -58,6 +59,7 @@ namespace MailSender
             // panelControllers
             // 
             this.panelControllers.BackColor = System.Drawing.Color.DimGray;
+            this.panelControllers.Controls.Add(this.btn_Senders);
             this.panelControllers.Controls.Add(this.btn_Start);
             this.panelControllers.Controls.Add(this.btn_Remittants);
             this.panelControllers.Controls.Add(this.pictureBox_Logo);
@@ -66,6 +68,20 @@ namespace MailSender
             this.panelControllers.Name = "panelControllers";
             this.panelControllers.Size = new System.Drawing.Size(81, 450);
             this.panelControllers.TabIndex = 3;
+            // 
+            // btn_Senders
+            // 
+            this.btn_Senders.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Senders.FlatAppearance.BorderSize = 0;
+            this.btn_Senders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Senders.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_Senders.Location = new System.Drawing.Point(0, 56);
+            this.btn_Senders.Name = "btn_Senders";
+            this.btn_Senders.Size = new System.Drawing.Size(81, 28);
+            this.btn_Senders.TabIndex = 9;
+            this.btn_Senders.Text = "Senders";
+            this.btn_Senders.UseVisualStyleBackColor = true;
+            this.btn_Senders.Click += new System.EventHandler(this.btn_Senders_Click);
             // 
             // btn_Start
             // 
@@ -153,6 +169,7 @@ namespace MailSender
         private System.Windows.Forms.Panel panel_BackgoundImg;
         private System.Windows.Forms.Button btn_Start;
         private System.Windows.Forms.Button btn_Remittants;
+        private System.Windows.Forms.Button btn_Senders;
     }
 }
 

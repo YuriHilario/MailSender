@@ -38,11 +38,23 @@ namespace MailSender
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }
+        private void Senders()
+        {
+            Application.Run(new AddSender());
+        }
+
+        private void btn_Senders_Click(object sender, EventArgs e)
+        {
+            AddSender addSender = new AddSender();
+            thread = new Thread(Senders);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
 
 
 
         #endregion
 
-        
+
     }
 }
