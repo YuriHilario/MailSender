@@ -39,6 +39,7 @@ namespace MailSender.Views
         private void LoadDataGridView()
         {
             dataGridView_Remittants.Rows.Clear();
+            ClearForm();
 
             List<Remittee> remittants = new List<Remittee>();
             using (var context = new AppContext())
@@ -61,29 +62,40 @@ namespace MailSender.Views
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            dataGridView_Remittants.Rows.Clear();
-            string cnpj = txt_FilterCNPJ.Text.Trim().Replace(",","").Replace(".", "").Replace("/", "").Replace("-", "");
-            Remittee remittee = new Remittee();
-
-            using (var context = new AppContext())
+            try
             {
-                remittee = context.Remittees.Find(cnpj);                
+                dataGridView_Remittants.Rows.Clear();
+                string cnpj = txt_FilterCNPJ.Text.Trim().Replace(",", "").Replace(".", "").Replace("/", "").Replace("-", "");
+                Remittee remittee = new Remittee();
+
+                using (var context = new AppContext())
+                {
+                    remittee = context.Remittees.Find(cnpj);
+                }
+
+                dataGridView_Remittants.Rows.Add(remittee.Name,
+                                                 remittee.UF,
+                                                 remittee.CNPJ,
+                                                 remittee.EmailAddress,
+                                                 remittee.EmailAddressII,
+                                                 remittee.EmailAddressIII,
+                                                 remittee.EmailAddressIV,
+                                                 remittee.EmailAddressV);
+                ClearForm();
+
             }
-
-            dataGridView_Remittants.Rows.Add(remittee.Name,
-                                             remittee.UF,
-                                             remittee.CNPJ,
-                                             remittee.EmailAddress,
-                                             remittee.EmailAddressII,
-                                             remittee.EmailAddressIII,
-                                             remittee.EmailAddressIV,
-                                             remittee.EmailAddressV);
-
+            catch (Exception except)
+            {
+                MessageBox.Show(except.InnerException.Message, "Error", MessageBoxButtons.OK);
+                ClearForm();
+            }
+            
         }
 
         private void btn_LoadData_Click(object sender, EventArgs e)
         {
-            dataGridView_Remittants.Rows.Clear(); 
+            dataGridView_Remittants.Rows.Clear();
+            ClearForm();
 
             List<Remittee> remittants = new List<Remittee>();
             using (var context = new AppContext())
@@ -130,47 +142,68 @@ namespace MailSender.Views
                 MessageBox.Show("Registration updated successfully !", "Record Update", MessageBoxButtons.OK);
                 dataGridView_Remittants.Rows.Clear();
                 LoadDataGridView();
+                ClearForm();
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.InnerException.ToString(), "Error", MessageBoxButtons.OK);
+                ClearForm();
             }
             
         }
 
         private void btn_Select_Click(object sender, EventArgs e)
         {
-            string name = dataGridView_Remittants.CurrentRow.Cells[0].Value.ToString();
-            string uf = dataGridView_Remittants.CurrentRow.Cells[1].Value.ToString();
-            string cnpj = dataGridView_Remittants.CurrentRow.Cells[2].Value.ToString().Replace(",","").Replace("/", "").Replace("-", "").Replace(".", "");
-            string address = dataGridView_Remittants.CurrentRow.Cells[3].Value.ToString();
-            string addressII = dataGridView_Remittants.CurrentRow.Cells[4].Value.ToString();
-            string addressIII = dataGridView_Remittants.CurrentRow.Cells[5].Value.ToString();
-            string addressIV = dataGridView_Remittants.CurrentRow.Cells[6].Value.ToString();
-            string addressV = dataGridView_Remittants.CurrentRow.Cells[7].Value.ToString();
-
-
-            txt_Name.Text = name;
-            txt_UF.Text = uf;
-            txt_CNPJ.Text = cnpj;
-            txt_Address.Text = address;
-            txt_AddressII.Text = addressII;
-            txt_AddressIII.Text = addressIII;
-            txt_AddressIV.Text = addressIV;
-            txt_AddressV.Text = addressV;
-
-            Remittee remittee = new Remittee()
+            try
             {
-                Name = txt_Name.Text,
-                UF = txt_UF.Text,
-                CNPJ = txt_CNPJ.Text,
-                EmailAddress = txt_Address.Text,
-                EmailAddressII = txt_AddressII.Text,
-                EmailAddressIII = txt_AddressIII.Text,
-                EmailAddressIV = txt_AddressIV.Text,
-                EmailAddressV = txt_AddressV.Text
-            };
+                string name = dataGridView_Remittants.CurrentRow.Cells[0].Value.ToString();
+                string uf = dataGridView_Remittants.CurrentRow.Cells[1].Value.ToString();
+                string cnpj = dataGridView_Remittants.CurrentRow.Cells[2].Value.ToString().Replace(",", "").Replace("/", "").Replace("-", "").Replace(".", "");
+                string address = dataGridView_Remittants.CurrentRow.Cells[3].Value.ToString();
+                string addressII = dataGridView_Remittants.CurrentRow.Cells[4].Value.ToString();
+                string addressIII = dataGridView_Remittants.CurrentRow.Cells[5].Value.ToString();
+                string addressIV = dataGridView_Remittants.CurrentRow.Cells[6].Value.ToString();
+                string addressV = dataGridView_Remittants.CurrentRow.Cells[7].Value.ToString();
 
+
+                txt_Name.Text = name;
+                txt_UF.Text = uf;
+                txt_CNPJ.Text = cnpj;
+                txt_Address.Text = address;
+                txt_AddressII.Text = addressII;
+                txt_AddressIII.Text = addressIII;
+                txt_AddressIV.Text = addressIV;
+                txt_AddressV.Text = addressV;
+
+                Remittee remittee = new Remittee()
+                {
+                    Name = txt_Name.Text,
+                    UF = txt_UF.Text,
+                    CNPJ = txt_CNPJ.Text,
+                    EmailAddress = txt_Address.Text,
+                    EmailAddressII = txt_AddressII.Text,
+                    EmailAddressIII = txt_AddressIII.Text,
+                    EmailAddressIV = txt_AddressIV.Text,
+                    EmailAddressV = txt_AddressV.Text
+                };
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.InnerException.Message, "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void ClearForm()
+        {
+            txt_UF.Text = string.Empty;
+            txt_Name.Text = string.Empty;
+            txt_FilterCNPJ.Text = string.Empty;
+            txt_CNPJ.Text = string.Empty;
+            txt_Address.Text = string.Empty;
+            txt_AddressII.Text = string.Empty;
+            txt_AddressIII.Text = string.Empty;
+            txt_AddressIV.Text = string.Empty;
+            txt_AddressV.Text = string.Empty;
         }
     }
 }
