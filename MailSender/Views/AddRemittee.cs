@@ -1,6 +1,9 @@
 ﻿using MailSender.Entities;
 using MailSender.Repositories;
+using Newtonsoft.Json;
+using RestSharp;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using AppContext = MailSender.Repositories.AppContext;
 
@@ -14,7 +17,7 @@ namespace MailSender.Views
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
-        {            
+        {
             Remittee remittee = new Remittee()
             {
                 Name = txt_Name.Text,
@@ -37,8 +40,8 @@ namespace MailSender.Views
             catch (Exception except)
             {
                 MessageBox.Show(except.InnerException.ToString());
-            }
-        }       
+            }            
+        }
     }
 }
 

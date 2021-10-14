@@ -19,32 +19,43 @@ namespace MailSender.Views
         }
 
         private void btn_Send_Click(object sender, EventArgs e)
-        {            
-            Remittee to = new Remittee()
-                {
-                    Name = "Aleand Seguros LTDA",
-                    EmailAddress = "aleand.licita@gmail.com",
-                    EmailAddressII = "alex@aleand.com.br",
-                    EmailAddressIII = "danielle@aleand.com.br",
-                    EmailAddressIV = "cotacoes@aleand.com.br",
-                    EmailAddressV = "vendas@aleand.com.br"
-                };
-            Sender from = new Sender()
+        {
+            try
             {
-                Name = "Sender Mail",
-                EmailAddres = "aleand.bot@gmail.com"
-            };            
-            Mail mail = new Mail()
-            {
-                Id = new Random().Next(),
-                SendDate = DateTime.Now,
-                Sender = from,
-                Remittee = to,
-                Body = txt_Body.Text,
-                Title = txt_Subject.Text
-            };
+                var from = SenderContext.SearchSender_PerEmail(txt_From.Text.Trim());
+                string uf = txt_To.Text.Trim().ToUpper();
 
-            ToSend._toSend(mail);
+                List<Remittee> remittants = new List<Remittee>();
+                using (var context = new AppContext())
+                {
+                    remittants = context.Remittees.Where(r => r.UF.Contains(uf)).ToList();
+                }
+                foreach (var remittee in remittants)
+                {
+                    if (remittee.UF == uf && remittee.EmailAddress != string.Empty)
+                    {
+                        Mail mail = new Mail()
+                        {
+                            Id = new Random().Next(),
+                            SendDate = DateTime.Now,
+                            Sender = from,
+                            Remittee = remittee,
+                            Body = txt_Body.Text,
+                            Title = txt_Subject.Text
+                        };
+                        ToSend._toSend(mail);
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            catch (Exception except)
+            {
+                MessageBox.Show(except.InnerException.Message, "Error", MessageBoxButtons.OK);
+            }
+            
         }
 
         private void LoadSender()
@@ -60,7 +71,7 @@ namespace MailSender.Views
                 txt_From.Items.Add(sender.EmailAddres);
             }
         }
-        
+
         private void LoadTo()
         {
             var ufs = LoadUF.LoadDataLocates();
@@ -68,16 +79,6 @@ namespace MailSender.Views
             {
                 txt_To.Items.Add(to.sigla);
             }
-        }
-
-        private Sender SearchSender_PerEmail(string email)
-        {
-            Sender sender = new Sender();
-            using (var context = new AppContext())
-            {
-                sender = context.Sender.Find(email);
-            }
-            return sender;
         }
     }
 }

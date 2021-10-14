@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MailSender.Repositories
 {
-    class RemitteeContext : DbContext
+    public class RemitteeContext : DbContext
     {
         public DbSet<Remittee> Remittees { get; set; }
 
@@ -21,14 +21,24 @@ namespace MailSender.Repositories
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=D:\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
-          
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=X:\DatabaseSender.db");
+
         public static List<Remittee> FindPerUF(string uf)
         {
             List<Remittee> remittants = new List<Remittee>();
             using (var context = new RemitteeContext())
             {
-                var remittee = context.Remittees.Where(r => r.UF.StartsWith(uf)).ToList();
+                var remittee = context.Remittees.Find(uf);
+                return remittants;
+            }
+        }
+
+        public static List<Remittee> FindAll()
+        {
+            List<Remittee> remittants = new List<Remittee>();
+            using (var context = new RemitteeContext())
+            {
+                var remittee = context.Remittees.ToList();
                 return remittants;
             }
         }

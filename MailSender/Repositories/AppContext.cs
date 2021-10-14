@@ -1,6 +1,7 @@
 ﻿using MailSender.Entities;
 using Microsoft.EntityFrameworkCore;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MailSender.Repositories
 {
@@ -21,6 +22,8 @@ namespace MailSender.Repositories
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=D:\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=X:\DatabaseSender.db");
+
+        
     }
 }

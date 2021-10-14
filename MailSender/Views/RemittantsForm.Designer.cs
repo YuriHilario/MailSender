@@ -43,7 +43,6 @@ namespace MailSender.Views
             this.panel_Control = new System.Windows.Forms.Panel();
             this.btn_LoadData = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.txt_FilterCNPJ = new System.Windows.Forms.TextBox();
             this.lbl_FilterCNPJ = new System.Windows.Forms.Label();
             this.btn_Select = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
@@ -66,6 +65,7 @@ namespace MailSender.Views
             this.btn_Save = new System.Windows.Forms.Button();
             this.txt_UF = new System.Windows.Forms.TextBox();
             this.lbl_UF = new System.Windows.Forms.Label();
+            this.txt_FilterCNPJ = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Remittants)).BeginInit();
             this.panel_DataGridView.SuspendLayout();
             this.panel_Control.SuspendLayout();
@@ -170,9 +170,9 @@ namespace MailSender.Views
             // panel_Control
             // 
             this.panel_Control.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_Control.Controls.Add(this.txt_FilterCNPJ);
             this.panel_Control.Controls.Add(this.btn_LoadData);
             this.panel_Control.Controls.Add(this.btn_Search);
-            this.panel_Control.Controls.Add(this.txt_FilterCNPJ);
             this.panel_Control.Controls.Add(this.lbl_FilterCNPJ);
             this.panel_Control.Controls.Add(this.btn_Select);
             this.panel_Control.Controls.Add(this.btn_Add);
@@ -210,18 +210,11 @@ namespace MailSender.Views
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
-            // txt_FilterCNPJ
-            // 
-            this.txt_FilterCNPJ.Location = new System.Drawing.Point(853, 6);
-            this.txt_FilterCNPJ.Name = "txt_FilterCNPJ";
-            this.txt_FilterCNPJ.Size = new System.Drawing.Size(261, 23);
-            this.txt_FilterCNPJ.TabIndex = 3;
-            // 
             // lbl_FilterCNPJ
             // 
             this.lbl_FilterCNPJ.AutoSize = true;
             this.lbl_FilterCNPJ.ForeColor = System.Drawing.Color.White;
-            this.lbl_FilterCNPJ.Location = new System.Drawing.Point(813, 11);
+            this.lbl_FilterCNPJ.Location = new System.Drawing.Point(974, 9);
             this.lbl_FilterCNPJ.Name = "lbl_FilterCNPJ";
             this.lbl_FilterCNPJ.Size = new System.Drawing.Size(34, 15);
             this.lbl_FilterCNPJ.TabIndex = 2;
@@ -426,6 +419,15 @@ namespace MailSender.Views
             this.lbl_UF.TabIndex = 17;
             this.lbl_UF.Text = "UF";
             // 
+            // txt_FilterCNPJ
+            // 
+            this.txt_FilterCNPJ.Location = new System.Drawing.Point(1014, 6);
+            this.txt_FilterCNPJ.Mask = "00.000.000/0000-00";
+            this.txt_FilterCNPJ.Name = "txt_FilterCNPJ";
+            this.txt_FilterCNPJ.Size = new System.Drawing.Size(110, 23);
+            this.txt_FilterCNPJ.TabIndex = 6;
+            this.txt_FilterCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // RemittantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -493,12 +495,12 @@ namespace MailSender.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn addressIII;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressIV;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressV;
-        private System.Windows.Forms.TextBox txt_FilterCNPJ;
         private System.Windows.Forms.Label lbl_FilterCNPJ;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Button btn_LoadData;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.TextBox txt_UF;
         private System.Windows.Forms.Label lbl_UF;
+        private System.Windows.Forms.MaskedTextBox txt_FilterCNPJ;
     }
 }

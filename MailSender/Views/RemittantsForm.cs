@@ -62,7 +62,7 @@ namespace MailSender.Views
         private void btn_Search_Click(object sender, EventArgs e)
         {
             dataGridView_Remittants.Rows.Clear();
-            string cnpj = txt_FilterCNPJ.Text;
+            string cnpj = txt_FilterCNPJ.Text.Trim().Replace(",","").Replace(".", "").Replace("/", "").Replace("-", "");
             Remittee remittee = new Remittee();
 
             using (var context = new AppContext())
@@ -127,10 +127,13 @@ namespace MailSender.Views
                         context.SaveChanges();
                     }
                 }
+                MessageBox.Show("Registration updated successfully !", "Record Update", MessageBoxButtons.OK);
+                dataGridView_Remittants.Rows.Clear();
+                LoadDataGridView();
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.InnerException.ToString());
+                MessageBox.Show(exception.InnerException.ToString(), "Error", MessageBoxButtons.OK);
             }
             
         }

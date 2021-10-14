@@ -71,7 +71,7 @@ namespace MailSender.Views
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(296, 114);
+            this.btn_Save.Location = new System.Drawing.Point(296, 118);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(75, 23);
             this.btn_Save.TabIndex = 3;
@@ -105,7 +105,7 @@ namespace MailSender.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(383, 149);
+            this.ClientSize = new System.Drawing.Size(383, 148);
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.txt_Name);
             this.Controls.Add(this.txt_Address);

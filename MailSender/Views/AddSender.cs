@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using MailSender.Repositories;
+using Newtonsoft.Json;
+using RestSharp;
 
 namespace MailSender.Views
 {
@@ -25,7 +27,7 @@ namespace MailSender.Views
                 {
                     EmailAddres = txt_Address.Text,
                     Name = txt_Name.Text,
-                    Password = txt_Password.Text
+                    Password = txt_Password.Text,
                 };
                 if (userSender != null || userSender.EmailAddres != string.Empty || userSender.Password != string.Empty || userSender.Name != string.Empty)
                 {
@@ -42,6 +44,6 @@ namespace MailSender.Views
                 MessageBox.Show(exc.InnerException.Message);
             }
             
-        }
+        }        
     }
 }

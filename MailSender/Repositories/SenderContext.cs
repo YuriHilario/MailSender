@@ -21,8 +21,18 @@ namespace MailSender.Repositories
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=D:\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=X:\DatabaseSender.db");
+                       
 
+        public static Sender SearchSender_PerEmail(string email)
+        {
+            Sender sender = new Sender();
+            using (var context = new AppContext())
+            {
+                sender = context.Sender.Find(email);
+            }
+            return sender;
+        }
 
         public static void Add(Sender sender)
         {
