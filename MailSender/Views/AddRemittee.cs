@@ -35,12 +35,26 @@ namespace MailSender.Views
                 {
                     context.Remittees.Add(remittee);
                     context.SaveChanges();
+                    MessageBox.Show("Remittee saved successfully !");
+                    ClearForm();
                 }
             }
             catch (Exception except)
             {
                 MessageBox.Show(except.InnerException.ToString());
             }            
+        }
+
+        private void ClearForm()
+        {
+            txt_Name.Text = string.Empty;
+            txt_CNPJ.Text = string.Empty;
+            txt_UF.Text = string.Empty;
+            txt_Address.Text = string.Empty;
+            txt_AddressII.Text = string.Empty;
+            txt_AddressIII.Text = string.Empty;
+            txt_AddressIV.Text = string.Empty;
+            txt_AddressV.Text = string.Empty;
         }
     }
 }

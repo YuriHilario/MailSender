@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using MailSender.Repositories;
 using System.Linq;
 using AppContext = MailSender.Repositories.AppContext;
+using System.Globalization;
 
 namespace MailSender.Views
 {
@@ -20,19 +21,20 @@ namespace MailSender.Views
 
         private void btn_Send_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var from = SenderContext.SearchSender_PerEmail(txt_From.Text.Trim());
-                string uf = txt_To.Text.Trim().ToUpper();
+            var from = SenderContext.SearchSender_PerEmail(txt_From.Text.Trim());
+            string uf = txt_To.Text.Trim().ToUpper();
 
-                List<Remittee> remittants = new List<Remittee>();
-                using (var context = new AppContext())
+            List<Remittee> remittants = new List<Remittee>();
+            using (var context = new AppContext())
+            {
+                remittants = context.Remittees.Where(r => r.UF.Contains(uf)).ToList();
+            }
+
+            foreach (var remittee in remittants)
+            {
+                try
                 {
-                    remittants = context.Remittees.Where(r => r.UF.Contains(uf)).ToList();
-                }
-                foreach (var remittee in remittants)
-                {
-                    if (remittee.UF == uf && remittee.EmailAddress != string.Empty)
+                    if (remittee.UF == uf && remittee.EmailAddress != string.Empty && remittee.EmailAddress != null)
                     {
                         Mail mail = new Mail()
                         {
@@ -50,12 +52,13 @@ namespace MailSender.Views
 
                     }
                 }
+                catch (Exception except)
+                {
+                    //MessageBox.Show(except.InnerException.Message, "Error", MessageBoxButtons.OK);
+                    continue;
+                }
+                
             }
-            catch (Exception except)
-            {
-                MessageBox.Show(except.InnerException.Message, "Error", MessageBoxButtons.OK);
-            }
-            
         }
 
         private void LoadSender()

@@ -1,5 +1,6 @@
 ﻿using MailSender.Entities;
 using MailSender.Repositories;
+using MailSender.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace MailSender.Views
         {
             InitializeComponent();
             LoadDataGridView();
+            LoadUF_Filter();
         }
 
 
@@ -89,7 +91,7 @@ namespace MailSender.Views
                 MessageBox.Show(except.InnerException.Message, "Error", MessageBoxButtons.OK);
                 ClearForm();
             }
-            
+
         }
 
         private void btn_LoadData_Click(object sender, EventArgs e)
@@ -149,7 +151,7 @@ namespace MailSender.Views
                 MessageBox.Show(exception.InnerException.ToString(), "Error", MessageBoxButtons.OK);
                 ClearForm();
             }
-            
+
         }
 
         private void btn_Select_Click(object sender, EventArgs e)
@@ -205,5 +207,79 @@ namespace MailSender.Views
             txt_AddressIV.Text = string.Empty;
             txt_AddressV.Text = string.Empty;
         }
+
+        private void LoadUF_Filter()
+        {
+            var ufs = LoadUF.LoadDataLocates();
+            foreach (var to in ufs)
+            {
+                txt_Filter_UF.Items.Add(to.sigla);
+            }
+        }
+
+        private void btn_SelectPerUF_Click(object sender, EventArgs e)
+        {
+            string uf = txt_Filter_UF.Text.Trim().ToUpper();
+            dataGridView_Remittants.Rows.Clear();            
+
+            List<Remittee> remittants = new List<Remittee>();
+            using (var context = new AppContext())
+            {
+                remittants = context.Remittees.Where(r => r.UF.Contains(uf)).ToList();
+            }
+
+            foreach (Remittee remittee in remittants)
+            {
+                if (remittee.UF == uf)
+                {
+                    dataGridView_Remittants.Rows.Add(remittee.Name,
+                                                 remittee.UF,
+                                                 remittee.CNPJ,
+                                                 remittee.EmailAddress,
+                                                 remittee.EmailAddressII,
+                                                 remittee.EmailAddressIII,
+                                                 remittee.EmailAddressIV,
+                                                 remittee.EmailAddressV);
+                }
+                else
+                {
+                    continue;
+                }
+                
+            }
+            ClearForm();
+        }
+
+        private void btn_SelectPerEmail_Click(object sender, EventArgs e)
+        {
+            dataGridView_Remittants.Rows.Clear();
+            string email = txt_Email_Filter.Text.Trim();
+
+            List<Remittee> remittants = new List<Remittee>();
+
+            using (var context = new AppContext())
+            {
+                remittants = context.Remittees.Where(r => r.EmailAddress.Contains(email) ||
+                                                     r.EmailAddressII.Contains(email) ||
+                                                     r.EmailAddressIII.Contains(email) ||
+                                                     r.EmailAddressIV.Contains(email) ||
+                                                     r.EmailAddressV.Contains(email)).ToList();
+            }
+
+
+            foreach (Remittee remittee in remittants)
+            {
+                dataGridView_Remittants.Rows.Add(remittee.Name,
+                                                 remittee.UF,
+                                                 remittee.CNPJ,
+                                                 remittee.EmailAddress,
+                                                 remittee.EmailAddressII,
+                                                 remittee.EmailAddressIII,
+                                                 remittee.EmailAddressIV,
+                                                 remittee.EmailAddressV);
+            }//add data to datagridview
+            ClearForm();
+        }
     }
 }
+

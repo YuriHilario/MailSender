@@ -41,6 +41,13 @@ namespace MailSender.Views
             this.addressV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_DataGridView = new System.Windows.Forms.Panel();
             this.panel_Control = new System.Windows.Forms.Panel();
+            this.btn_SelectPerEmail = new System.Windows.Forms.Button();
+            this.btn_SelectPerUF = new System.Windows.Forms.Button();
+            this.txt_Filter_UF = new System.Windows.Forms.ComboBox();
+            this.txt_Email_Filter = new System.Windows.Forms.MaskedTextBox();
+            this.label_Email_Filter = new System.Windows.Forms.Label();
+            this.label_UF_Filter = new System.Windows.Forms.Label();
+            this.txt_FilterCNPJ = new System.Windows.Forms.MaskedTextBox();
             this.btn_LoadData = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
             this.lbl_FilterCNPJ = new System.Windows.Forms.Label();
@@ -65,7 +72,6 @@ namespace MailSender.Views
             this.btn_Save = new System.Windows.Forms.Button();
             this.txt_UF = new System.Windows.Forms.TextBox();
             this.lbl_UF = new System.Windows.Forms.Label();
-            this.txt_FilterCNPJ = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Remittants)).BeginInit();
             this.panel_DataGridView.SuspendLayout();
             this.panel_Control.SuspendLayout();
@@ -170,6 +176,12 @@ namespace MailSender.Views
             // panel_Control
             // 
             this.panel_Control.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_Control.Controls.Add(this.btn_SelectPerEmail);
+            this.panel_Control.Controls.Add(this.btn_SelectPerUF);
+            this.panel_Control.Controls.Add(this.txt_Filter_UF);
+            this.panel_Control.Controls.Add(this.txt_Email_Filter);
+            this.panel_Control.Controls.Add(this.label_Email_Filter);
+            this.panel_Control.Controls.Add(this.label_UF_Filter);
             this.panel_Control.Controls.Add(this.txt_FilterCNPJ);
             this.panel_Control.Controls.Add(this.btn_LoadData);
             this.panel_Control.Controls.Add(this.btn_Search);
@@ -181,6 +193,79 @@ namespace MailSender.Views
             this.panel_Control.Name = "panel_Control";
             this.panel_Control.Size = new System.Drawing.Size(1207, 35);
             this.panel_Control.TabIndex = 1;
+            // 
+            // btn_SelectPerEmail
+            // 
+            this.btn_SelectPerEmail.FlatAppearance.BorderSize = 0;
+            this.btn_SelectPerEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SelectPerEmail.ForeColor = System.Drawing.Color.White;
+            this.btn_SelectPerEmail.Location = new System.Drawing.Point(893, 0);
+            this.btn_SelectPerEmail.Name = "btn_SelectPerEmail";
+            this.btn_SelectPerEmail.Size = new System.Drawing.Size(75, 33);
+            this.btn_SelectPerEmail.TabIndex = 12;
+            this.btn_SelectPerEmail.Text = "Select";
+            this.btn_SelectPerEmail.UseVisualStyleBackColor = true;
+            this.btn_SelectPerEmail.Click += new System.EventHandler(this.btn_SelectPerEmail_Click);
+            // 
+            // btn_SelectPerUF
+            // 
+            this.btn_SelectPerUF.FlatAppearance.BorderSize = 0;
+            this.btn_SelectPerUF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SelectPerUF.ForeColor = System.Drawing.Color.White;
+            this.btn_SelectPerUF.Location = new System.Drawing.Point(541, 0);
+            this.btn_SelectPerUF.Name = "btn_SelectPerUF";
+            this.btn_SelectPerUF.Size = new System.Drawing.Size(75, 33);
+            this.btn_SelectPerUF.TabIndex = 11;
+            this.btn_SelectPerUF.Text = "Select";
+            this.btn_SelectPerUF.UseVisualStyleBackColor = true;
+            this.btn_SelectPerUF.Click += new System.EventHandler(this.btn_SelectPerUF_Click);
+            // 
+            // txt_Filter_UF
+            // 
+            this.txt_Filter_UF.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txt_Filter_UF.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.txt_Filter_UF.FormattingEnabled = true;
+            this.txt_Filter_UF.Location = new System.Drawing.Point(471, 6);
+            this.txt_Filter_UF.Name = "txt_Filter_UF";
+            this.txt_Filter_UF.Size = new System.Drawing.Size(67, 23);
+            this.txt_Filter_UF.TabIndex = 10;
+            // 
+            // txt_Email_Filter
+            // 
+            this.txt_Email_Filter.Location = new System.Drawing.Point(662, 6);
+            this.txt_Email_Filter.Name = "txt_Email_Filter";
+            this.txt_Email_Filter.Size = new System.Drawing.Size(225, 23);
+            this.txt_Email_Filter.TabIndex = 9;
+            this.txt_Email_Filter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label_Email_Filter
+            // 
+            this.label_Email_Filter.AutoSize = true;
+            this.label_Email_Filter.ForeColor = System.Drawing.Color.White;
+            this.label_Email_Filter.Location = new System.Drawing.Point(622, 9);
+            this.label_Email_Filter.Name = "label_Email_Filter";
+            this.label_Email_Filter.Size = new System.Drawing.Size(36, 15);
+            this.label_Email_Filter.TabIndex = 8;
+            this.label_Email_Filter.Text = "Email";
+            // 
+            // label_UF_Filter
+            // 
+            this.label_UF_Filter.AutoSize = true;
+            this.label_UF_Filter.ForeColor = System.Drawing.Color.White;
+            this.label_UF_Filter.Location = new System.Drawing.Point(444, 9);
+            this.label_UF_Filter.Name = "label_UF_Filter";
+            this.label_UF_Filter.Size = new System.Drawing.Size(21, 15);
+            this.label_UF_Filter.TabIndex = 7;
+            this.label_UF_Filter.Text = "UF";
+            // 
+            // txt_FilterCNPJ
+            // 
+            this.txt_FilterCNPJ.Location = new System.Drawing.Point(1014, 6);
+            this.txt_FilterCNPJ.Mask = "00.000.000/0000-00";
+            this.txt_FilterCNPJ.Name = "txt_FilterCNPJ";
+            this.txt_FilterCNPJ.Size = new System.Drawing.Size(110, 23);
+            this.txt_FilterCNPJ.TabIndex = 6;
+            this.txt_FilterCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btn_LoadData
             // 
@@ -419,15 +504,6 @@ namespace MailSender.Views
             this.lbl_UF.TabIndex = 17;
             this.lbl_UF.Text = "UF";
             // 
-            // txt_FilterCNPJ
-            // 
-            this.txt_FilterCNPJ.Location = new System.Drawing.Point(1014, 6);
-            this.txt_FilterCNPJ.Mask = "00.000.000/0000-00";
-            this.txt_FilterCNPJ.Name = "txt_FilterCNPJ";
-            this.txt_FilterCNPJ.Size = new System.Drawing.Size(110, 23);
-            this.txt_FilterCNPJ.TabIndex = 6;
-            this.txt_FilterCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // RemittantsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -502,5 +578,11 @@ namespace MailSender.Views
         private System.Windows.Forms.TextBox txt_UF;
         private System.Windows.Forms.Label lbl_UF;
         private System.Windows.Forms.MaskedTextBox txt_FilterCNPJ;
+        private System.Windows.Forms.MaskedTextBox txt_Email_Filter;
+        private System.Windows.Forms.Label label_Email_Filter;
+        private System.Windows.Forms.Label label_UF_Filter;
+        private System.Windows.Forms.ComboBox txt_Filter_UF;
+        private System.Windows.Forms.Button btn_SelectPerEmail;
+        private System.Windows.Forms.Button btn_SelectPerUF;
     }
 }

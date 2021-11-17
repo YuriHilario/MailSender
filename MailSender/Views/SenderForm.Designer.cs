@@ -72,7 +72,7 @@ namespace MailSender.Views
             this.txt_Body.Location = new System.Drawing.Point(12, 108);
             this.txt_Body.Multiline = true;
             this.txt_Body.Name = "txt_Body";
-            this.txt_Body.Size = new System.Drawing.Size(590, 311);
+            this.txt_Body.Size = new System.Drawing.Size(483, 311);
             this.txt_Body.TabIndex = 6;
             // 
             // btn_Send
@@ -120,7 +120,7 @@ namespace MailSender.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(644, 464);
+            this.ClientSize = new System.Drawing.Size(774, 464);
             this.Controls.Add(this.txt_From);
             this.Controls.Add(this.lbl_From);
             this.Controls.Add(this.txt_To);

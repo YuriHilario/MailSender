@@ -32,18 +32,28 @@ namespace MailSender.Views
                 if (userSender != null || userSender.EmailAddres != string.Empty || userSender.Password != string.Empty || userSender.Name != string.Empty)
                 {
                     SenderContext.Add(userSender);
-                    MessageBox.Show("Usuario Adicionado com Sucesso !");
+                    MessageBox.Show("Sender User Added Successfully !");
+                    ClearForm();
                 }
                 else
                 {
-                    MessageBox.Show("Dados Nulos : "+ "\n" +", O Usuario não pode ser adicionado");
+                    MessageBox.Show("Null Data:" + "\n" + "User cannot be added");
+                    ClearForm();
                 }
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.InnerException.Message);
+                ClearForm();
             }
             
         }        
+
+        private void ClearForm()
+        {
+            txt_Name.Text = string.Empty;
+            txt_Address.Text = string.Empty;
+            txt_Password.Text = string.Empty;
+        }
     }
 }
