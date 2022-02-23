@@ -1,5 +1,4 @@
 ﻿using MailSender.Entities;
-using System;
 using System.Net.Mail;
 
 namespace MailSender.Services
@@ -7,7 +6,7 @@ namespace MailSender.Services
     public class ToSend
     {
         public static void _toSend(Mail mail)
-        {           
+        {
             // Envio de email com descrição
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress(mail.Sender.EmailAddres, mail.Sender.Name);
@@ -30,8 +29,8 @@ namespace MailSender.Services
             }
             mailMessage.Subject = mail.Title;
             mailMessage.Body = mail.Body;
-            
-            const string fromPassword = "Ale@nd2409";
+
+            //const string fromPassword = "Ale@nd2409";
 
             var smtp = new SmtpClient
             {
