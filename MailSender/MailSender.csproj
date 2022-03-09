@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFrameworkCore.Sqlite.Migrations" Version="1.0.0" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.40" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="5.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
       <PrivateAssets>all</PrivateAssets>

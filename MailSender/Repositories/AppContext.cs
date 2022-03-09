@@ -22,7 +22,7 @@ namespace MailSender.Repositories
             }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"DataSource=C:\Users\pablo\source\repos\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite(@"Data Source=C:\Users\pablo\OneDrive\Área de Trabalho\Dev_Aleand\MailSender\MailSender\Repositories\Database\DatabaseSender.db");
 
         
     }

@@ -1,5 +1,8 @@
 ﻿using MailSender.Entities;
+using System;
+using System.IO;
 using System.Net.Mail;
+using System.Net.Mime;
 
 namespace MailSender.Services
 {
@@ -27,8 +30,17 @@ namespace MailSender.Services
             {
                 mailMessage.Bcc.Add(mail.Remittee.EmailAddressV);
             }
+            mailMessage.IsBodyHtml = true;
             mailMessage.Subject = mail.Title;
-            mailMessage.Body = mail.Body;
+            mailMessage.Body = $"<p>{mail.Body}</p> <br/><br/><img src=\"cid:{mail.PatchImage}\" />";
+            mailMessage.Priority = MailPriority.High;
+            string attachmentPath = @$"{mail.PatchImage}";
+            Attachment inline = new Attachment(attachmentPath);
+            inline.ContentDisposition.Inline = true;
+            inline.ContentDisposition.DispositionType = DispositionTypeNames.Inline;           
+            inline.ContentType.MediaType = "image/png";
+            inline.ContentType.Name = Path.GetFileName(attachmentPath);
+            mailMessage.Attachments.Add(inline);          
 
             //const string fromPassword = "Ale@nd2409";
 
@@ -39,7 +51,7 @@ namespace MailSender.Services
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new System.Net.NetworkCredential(mail.Sender.EmailAddres, mail.Sender.Password)
+                Credentials = new System.Net.NetworkCredential(mail.Sender.EmailAddres, mail.Sender.Password)                
             };
             smtp.Send(mailMessage);
         }

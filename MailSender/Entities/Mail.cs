@@ -14,5 +14,7 @@ namespace MailSender.Entities
         public Sender Sender { get; set; }
         public Remittee Remittee { get; set; }
         public string Body { get; set; }
+        public string PatchImage { get; set; }
+
     }
 }

@@ -38,6 +38,9 @@ namespace MailSender.Views
             this.txt_To = new System.Windows.Forms.ComboBox();
             this.lbl_From = new System.Windows.Forms.Label();
             this.txt_From = new System.Windows.Forms.ComboBox();
+            this.btn_Layouts = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_Layout = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbl_To
@@ -72,7 +75,7 @@ namespace MailSender.Views
             this.txt_Body.Location = new System.Drawing.Point(12, 108);
             this.txt_Body.Multiline = true;
             this.txt_Body.Name = "txt_Body";
-            this.txt_Body.Size = new System.Drawing.Size(483, 311);
+            this.txt_Body.Size = new System.Drawing.Size(551, 311);
             this.txt_Body.TabIndex = 6;
             // 
             // btn_Send
@@ -115,12 +118,44 @@ namespace MailSender.Views
             this.txt_From.Size = new System.Drawing.Size(365, 23);
             this.txt_From.TabIndex = 12;
             // 
+            // btn_Layouts
+            // 
+            this.btn_Layouts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Layouts.ForeColor = System.Drawing.Color.White;
+            this.btn_Layouts.Location = new System.Drawing.Point(381, 41);
+            this.btn_Layouts.Name = "btn_Layouts";
+            this.btn_Layouts.Size = new System.Drawing.Size(46, 23);
+            this.btn_Layouts.TabIndex = 15;
+            this.btn_Layouts.Text = "...";
+            this.btn_Layouts.UseVisualStyleBackColor = true;
+            this.btn_Layouts.Click += new System.EventHandler(this.btn_Layouts_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(135, 44);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 15);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Layout";
+            // 
+            // txt_Layout
+            // 
+            this.txt_Layout.Location = new System.Drawing.Point(184, 41);
+            this.txt_Layout.Name = "txt_Layout";
+            this.txt_Layout.Size = new System.Drawing.Size(187, 23);
+            this.txt_Layout.TabIndex = 17;
+            // 
             // SenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(774, 464);
+            this.ClientSize = new System.Drawing.Size(575, 464);
+            this.Controls.Add(this.txt_Layout);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btn_Layouts);
             this.Controls.Add(this.txt_From);
             this.Controls.Add(this.lbl_From);
             this.Controls.Add(this.txt_To);
@@ -148,5 +183,8 @@ namespace MailSender.Views
         private System.Windows.Forms.ComboBox txt_To;
         private System.Windows.Forms.Label lbl_From;
         private System.Windows.Forms.ComboBox txt_From;
+        private System.Windows.Forms.Button btn_Layouts;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_Layout;
     }
 }
